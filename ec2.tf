@@ -9,7 +9,7 @@ resource "aws_instance" "instance" {
 }
 
 resource "null_resource" "null" {
-  depends_on = [null_resource.copy-local-artifacts]
+  depends_on = [null_resource.copy_local_artifacts]
   provisioner "remote-exec" {
     connection {
       type     = "ssh"
@@ -24,7 +24,7 @@ resource "null_resource" "null" {
   }
 }
 
-resource "null_resource" "copy-local-artifacts" {
+resource "null_resource" "copy_local_artifacts" {
   provisioner "file" {
     connection {
       type     = "ssh"
