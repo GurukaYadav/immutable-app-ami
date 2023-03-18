@@ -4,7 +4,7 @@ resource "aws_instance" "instance" {
   vpc_security_group_ids = [aws_security_group.sg.id]
 
   tags = {
-    Name = "local.TAG_NAME"
+    Name = local.TAG_NAME
   }
 }
 
@@ -32,7 +32,7 @@ resource "null_resource" "copy_local_artifacts" {
       password = jsondecode(data.aws_secretsmanager_secret_version.secret.secret_string)["SSH_PASS"]
       host     = aws_instance.instance.private_ip
     }
-    source      = "${var.COMPONENT}-${var.APP_VERSION}.zip"
+    source      = "${COMPONENT}-${APP_VERSION}.zip"
     destination = "/tmp/${var.COMPONENT}.zip"
   }
 }
