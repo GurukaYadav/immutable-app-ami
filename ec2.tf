@@ -32,13 +32,13 @@ resource "null_resource" "copy_local_artifacts" {
       password = jsondecode(data.aws_secretsmanager_secret_version.secret.secret_string)["SSH_PASS"]
       host     = aws_instance.instance.private_ip
     }
-    source      = "${var.COMPONENT}-${var.APP_VERSION}.zip"
+    source      = "${var.COMPONENT}-${var.TAG_NAME}.zip"
     destination = "/tmp/${var.COMPONENT}.zip"
   }
 }
 
 resource "aws_ami_from_instance" "ami" {
   depends_on         = [null_resource.resource]
-  name               = "${var.COMPONENT}-${var.APP_VERSION}"
+  name               = "${var.COMPONENT}-${var.TAG_NAME}"
   source_instance_id = aws_instance.instance.id
 }
