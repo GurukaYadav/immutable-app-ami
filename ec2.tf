@@ -8,7 +8,7 @@ resource "aws_instance" "instance" {
   }
 }
 
-resource "null_resource" "null" {
+resource "null_resource" "resource" {
   depends_on = [null_resource.copy_local_artifacts]
   provisioner "remote-exec" {
     connection {
@@ -38,6 +38,7 @@ resource "null_resource" "copy_local_artifacts" {
 }
 
 resource "aws_ami_from_instance" "ami" {
+  depends_on = [null_resource.resource]
   name               = "${var.COMPONENT}-${var.APP_VERSION}"
   source_instance_id = aws_instance.instance.id
 }
