@@ -1,2 +1,2 @@
 variable "COMPONENT" {}
-variable "TAG_NAME" {}
+variable "APP_VERSION" {}
