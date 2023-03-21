@@ -1,5 +1,5 @@
 resource "aws_security_group" "sg" {
-  name        = "${local.TAG_NAME}-sg"
+  name        = "${local.TAG_PREFIX}-sg"
   description = "Allow TCP inbound traffic"
 
 
@@ -19,7 +19,7 @@ resource "aws_security_group" "sg" {
   }
 
   tags = {
-    Name = "${local.TAG_NAME}-sg"
+    Name = "${local.TAG_PREFIX}-sg"
   }
 
 }

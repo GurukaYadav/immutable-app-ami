@@ -1,3 +1,3 @@
 locals {
-  TAG_NAME = var.COMPONENT
+  TAG_PREFIX= var.COMPONENT
 }

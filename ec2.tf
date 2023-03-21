@@ -4,7 +4,7 @@ resource "aws_instance" "instance" {
   vpc_security_group_ids = [aws_security_group.sg.id]
 
   tags = {
-    Name = local.TAG_NAME
+    Name = local.TAG_PREFIX
   }
 }
 
